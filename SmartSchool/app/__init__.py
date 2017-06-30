@@ -5,4 +5,4 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
-from app.models import user,school,classes
+from app.models import user,school,classes,subject

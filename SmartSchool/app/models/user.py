@@ -15,5 +15,8 @@ class User(db.Model):
                               secondary = school_user, #关联表,只需要在一个表建立关系,sqlalchemy会负责处理好另一个表
                               backref = db.backref('users',lazy='dynamic'),
                               lazy = 'dynamic')
+    subject = db.relationship('Subject',
+                                backref = 'user',
+                                lazy = 'dynamic')
     def __repr__(self):
         return '<User %r>' % (self.name)
