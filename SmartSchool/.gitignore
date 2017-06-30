@@ -1,0 +1,5 @@
+/Scripts/**
+/migrations/**
+/Lib/**
+/Include/**
+**/__pycache__/**
