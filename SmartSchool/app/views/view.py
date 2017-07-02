@@ -10,10 +10,24 @@ from flask import request
 def getIndex():
     return "<h1>Hello World</h1>"
 
-@app.route('/api/school/query')
-def getSchools():
-    userlist = user.User.query.all()
-    return json_response(userlist)
+# @app.route('/api/school/query')
+# def getSchools():
+#     userlist = user.User.query.all()
+#     return json_response(userlist)
+
+@app.route('/api/user/list')
+def getUsers():
+    userlist = []
+    result = user.User.query.all()
+    for o in result:
+        userlist.append(o.to_json())
+    return json_response(data = userlist)
+
+@app.route('/api/user/query')
+def getUser():
+    param_id = request.args.get('id')
+    result = user.User.query.get(param_id)
+    return json_response(data = result.to_json())
 
 @app.route('/api/subject/list')
 def getSubjects():
